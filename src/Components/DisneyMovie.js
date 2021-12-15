@@ -1,30 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectTrending } from '../features/movie/movieSlice'
-
-const Trending = () => {
-    const movies=useSelector(selectTrending);
-    return (
-        <Container>
-        <h4>Trendings</h4>
-        <Content>
-          {movies &&movies.map((movie,key)=>(
-              <Wrap key={key}>
-                  {/* {movie.id} */}
-                  <Link to={"/detail/"+ movie.id}>
-                      <img src={movie.cardImg} alt={movie.title} />
-                  </Link>
-              </Wrap>
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectDisneyMovie } from "../features/movie/movieSlice";
+const DisneyMovie = () => {
+  const movies = useSelector(selectDisneyMovie);
+  return (
+    <Container>
+      <h4>Disney Movies</h4>
+      <Content>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              <Link to={"/detail/" + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
           ))}
-        </Content>
+      </Content>
     </Container>
-    )
-}
+  );
+};
 
-export default Trending
-
+export default DisneyMovie;
 const Container = styled.div``;
 const Content = styled.div`
   padding: 0 0 26px;
@@ -55,6 +53,5 @@ const Wrap = styled.div`
     transform: scale(1.2);
     box-shadow: rgba(0 0 0 / 80%) 0px 40px 58px -16px,
       rgba(0 0 0 / 72%) 0px 30px 22px -10px;
-      
   }
 `;

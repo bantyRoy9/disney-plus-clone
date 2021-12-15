@@ -7,21 +7,21 @@ const NewDisney = () => {
     const movies=useSelector(selectNewDisney);
     console.log(movies);
     return (
-        <Container>
+      <Container>
         <h4>New To Disney+</h4>
         <Content>
-          {movies &&movies.map((movie,key)=>(
+          {movies &&
+            movies.map((movie, key) => (
               <Wrap key={key}>
-                  {movie.id}
-                  <Link to={"/detail/"+ movie.id}>
-                      <img src={movie.cardImg} alt={movie.title} />
-                  </Link>
+                {movie.id}
+                <Link to={"/detail/" + movie.id}>
+                  <img src={movie.cardImg} alt={movie.title} />
+                </Link>
               </Wrap>
-          ))}
+            ))}
         </Content>
-    </Container>
-      
-    )
+      </Container>
+    );
 }
 
 export default NewDisney

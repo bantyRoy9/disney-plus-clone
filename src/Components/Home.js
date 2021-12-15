@@ -2,6 +2,7 @@ import React,{useEffect} from 'react';
 import styled from 'styled-components';
 import ImgSlider from './ImgSlider';
 import NewDisney from './NewDisney';
+import DisneyMovie from './DisneyMovie';
 import Originals from './Originals';
 import Recommends from './Recommends';
 import Trending from './Trending';
@@ -14,21 +15,22 @@ const Home = (props) => {
     const dispatch=useDispatch();
     const userName=useSelector(selectUserName);
     let recommends=[];
-    let newDisneys = [];
+    let newDisney = [];
     let originals = [];
     let trending = [];
+    let disneyMovie = [];
     useEffect(()=>{
         db.collection('movies').onSnapshot((snapshot)=>{
             snapshot.docs.map((doc)=>{
-                // console.log(newDisneys);
+                console.log(newDisney);
                 switch(doc.data().type)
                 {
                     case 'recommend':
                         recommends=[...recommends,{id:doc.id,...doc.data()}];
                         break;
 
-                    case 'new':
-                        newDisneys = [...newDisneys, { id:doc.id,...doc.data() }];
+                    case 'newDisney':
+                        newDisney = [...newDisney, { id:doc.id,...doc.data() }];
                         break;
                 
 
@@ -39,14 +41,18 @@ const Home = (props) => {
                     case 'trending':
                         trending=[...trending,{id:doc.id,...doc.data()}];
                         break;
+                    case 'disneyMovie':
+                        disneyMovie = [ ...disneyMovie, { id: doc.id, ...doc.data() } ];
+                        break;
                 }
             });
             dispatch(
                 setMovies({
                     recommend:recommends,
-                    NewDisney:newDisneys,
+                    NewDisney:newDisney,
                     original:originals,
-                    trending:trending,
+                    trending: trending,
+                    disneyMovie:disneyMovie,
                 })
             );
         });
@@ -55,11 +61,12 @@ const Home = (props) => {
     return (
         <Container>
             <ImgSlider/>
-            <Viewers/>
+            <Viewers />
+            <DisneyMovie/>
             <Recommends/>
             {/* <NewDisney/> */}
             <Originals/>
-            <Trending/>
+            <Trending />
         </Container>
     );
 };
