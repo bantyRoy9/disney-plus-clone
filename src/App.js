@@ -11,10 +11,10 @@ const App = () => {
       <Router>
         <Header/>
         <Switch>
-          <Route exact path='/'>
+          {/* <Route exact path='/'>
             <Login/>
-          </Route>
-          <Route exact path='/home'>
+          </Route> */}
+          <Route exact path='/'>
             <Home/>
           </Route>
           <Route exact path='/detail/:id'>
