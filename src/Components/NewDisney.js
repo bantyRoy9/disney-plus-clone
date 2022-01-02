@@ -7,8 +7,8 @@ const NewDisney = () => {
     const movies=useSelector(selectNewDisney);
     console.log(movies);
     return (
-      <Container>
-        <h4>New To Disney+</h4>
+      <Container >
+        <h4 id='newDisneyId'>New To Disney+</h4>
         <Content>
           {movies &&
             movies.map((movie, key) => (

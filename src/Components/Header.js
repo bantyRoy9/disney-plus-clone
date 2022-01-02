@@ -2,7 +2,7 @@ import React,{useEffect} from 'react'
 import styled from 'styled-components'
 import { auth, provider } from '../firebase'
 import { useDispatch,useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory,Route } from 'react-router-dom';
 import {
     selectUserName,
     selectUserPhoto,
@@ -10,6 +10,7 @@ import {
     setUserLoginDetails,
     // setSignOutState,
 }from '../features/user/userSlice';
+import NewDisney from './NewDisney';
 
 const Header = (props) => {
     const dispatch=useDispatch();
@@ -83,14 +84,16 @@ const Header = (props) => {
                     <img src="/images/original-icon.svg" alt="HOME" />
                     <span>ORIGINALS</span>
                 </a>
-                <a href="">
+                <Link to="#newDisneyId">
                     <img src="/images/movie-icon.svg" alt="HOME" />
                     <span>MOVIES</span>
-                </a>
-                <a href="">
+                </Link>
+          
+                <Link to="/detail/m6c0aNeLjcSFLWZjX94O">
                     <img src="/images/series-icon.svg" alt="HOME" />
                     <span>SERIES</span>
-                </a>
+                </Link>
+
             </NavMenu>
             <SignOut>
                 <UserImg src={userPhoto} alt={userName}/>

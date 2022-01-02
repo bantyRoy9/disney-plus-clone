@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from 'react-router-dom'
 import './App.css'
+import AddNew from './Components/AddNew'
 import Detail from './Components/Detail'
 import Header from './Components/Header'
 import Home from './Components/Home'
@@ -20,6 +21,11 @@ const App = () => {
           <Route exact path='/detail/:id'>
           <Detail/>
           </Route>
+
+          <Route exact path='/new'>
+          <AddNew/>
+          </Route>
+          
         </Switch>
       </Router>
     </div>

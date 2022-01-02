@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import styled from 'styled-components';
 import ImgSlider from './ImgSlider';
-import NewDisney from './NewDisney';
+// import NewDisney from './NewDisney';
 import DisneyMovie from './DisneyMovie';
 import Originals from './Originals';
 import Recommends from './Recommends';
@@ -22,7 +22,6 @@ const Home = (props) => {
     useEffect(()=>{
         db.collection('movies').onSnapshot((snapshot)=>{
             snapshot.docs.map((doc)=>{
-                console.log(newDisney);
                 switch(doc.data().type)
                 {
                     case 'recommend':
@@ -44,6 +43,10 @@ const Home = (props) => {
                     case 'disneyMovie':
                         disneyMovie = [ ...disneyMovie, { id: doc.id, ...doc.data() } ];
                         break;
+                    default:
+                        {
+                            break;
+                        }
                 }
             });
             dispatch(
