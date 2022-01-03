@@ -12,6 +12,7 @@ const AddNew = () => {
         title:"",
         type:"",
         description:"",
+        subTitle:"",
     });
 
     const changeHandler=(e)=>{
@@ -27,6 +28,7 @@ const AddNew = () => {
             title:state.title,
             type:state.type,
             description:state.description,
+            subTitle:state.subTitle,
           })
           .then(()=>{
             setState({
@@ -35,6 +37,7 @@ const AddNew = () => {
               title:"",
               type:"",
               description:"",
+              subTitle:""
             })
             history.push('/');
           })
@@ -96,10 +99,22 @@ const AddNew = () => {
                   />
                 </div>
                 <div className="loginEmail">
+                    <label htmlFor="backgroundImg">SubTitle</label>  <br/>
+                  {/* <MailOutlineIcon /> */}
+                  <input
+                    type="text"
+                    placeholder="Enter SubTitle"
+                    required
+                    name='subTitle'
+                    value={state.subTitle}
+                    onChange={changeHandler}
+                  />
+                </div>
+                <div className="loginEmail">
                     <label htmlFor="backgroundImg">Description</label>
                     <br/>
                   {/* <MailOutlineIcon /> */}
-                  <textarea name="description" type="text" id="" cols="30" rows="10" value={state.description} onChange={changeHandler}></textarea>
+                  <textarea name="description" type="text" id="" cols="30" rows="3" value={state.description} onChange={changeHandler}></textarea>
                 </div>
               
             
@@ -109,6 +124,7 @@ const AddNew = () => {
     )
 }
 const AddNewStyled=styled.div`
+    text-align: center;
     height:100vh;
     width:100vw;
     color:white;
@@ -127,6 +143,9 @@ const AddNewStyled=styled.div`
       background:transparent;
       color:white;
       outline: none;
+      &::placeholder{
+        text-align: center;
+      }
     }
     textarea{
       margin:.5rem 0;
@@ -138,9 +157,11 @@ const AddNewStyled=styled.div`
       outline: none;
     }
     .loginBtn{
+      width:100%;
       &:hover{
         cursor: pointer;
       }
     }
+
 `;
 export default AddNew
