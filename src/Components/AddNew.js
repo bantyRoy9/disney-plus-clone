@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import db from '../firebase';
 import { useState } from 'react';
-const AddNew = ({history}) => {
-
+import { useHistory } from "react-router-dom";
+const AddNew = () => {
+  const history = useHistory()
     const [state,setState]=useState({
         backgroundImg:"",
         cardImg:"",
@@ -17,7 +18,6 @@ const AddNew = ({history}) => {
         setState({...state,[e.target.name]:e.target.value});
         
     }
-   
     const loginSubmit=async (e)=>{
         e.preventDefault();
         
@@ -27,17 +27,21 @@ const AddNew = ({history}) => {
             title:state.title,
             type:state.type,
             description:state.description,
-          });
-
-          setState({
-            backgroundImg:"",
-            cardImg:"",
-            title:"",
-            type:"",
-            description:"",
           })
+          .then(()=>{
+            setState({
+              backgroundImg:"",
+              cardImg:"",
+              title:"",
+              type:"",
+              description:"",
+            })
+            history.push('/');
+          })
+
+
           
-     
+          
     }
     return (
         <AddNewStyled>

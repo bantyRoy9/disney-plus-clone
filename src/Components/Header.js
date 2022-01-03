@@ -76,22 +76,9 @@ const Header = (props) => {
                     <img src="/images/search-icon.svg" alt="HOME" />
                     <span>SEARCH</span>
                 </a>
-                <a href="">
-                    <img src="/images/watchlist-icon.svg" alt="HOME" />
-                    <span>WATCHLIST</span>
-                </a>
-                <a href="">
-                    <img src="/images/original-icon.svg" alt="HOME" />
-                    <span>ORIGINALS</span>
-                </a>
-                <Link to="#newDisneyId">
-                    <img src="/images/movie-icon.svg" alt="HOME" />
-                    <span>MOVIES</span>
-                </Link>
-          
-                <Link to="/detail/m6c0aNeLjcSFLWZjX94O">
+                <Link to="/new">
                     <img src="/images/series-icon.svg" alt="HOME" />
-                    <span>SERIES</span>
+                    <span>NEW</span>
                 </Link>
 
             </NavMenu>
