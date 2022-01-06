@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import db from '../firebase';
 
 const Detail = (props) => {
@@ -11,6 +11,7 @@ const Detail = (props) => {
         .get().then((doc)=>{
             if(doc.exists)
             {
+                console.log(doc.data());
                 setDetailData(doc.data());
             }else{
                 console.log('no such document in firebase')
@@ -36,8 +37,10 @@ const Detail = (props) => {
                        <span>Play</span>
                    </Player>
                    <Trailer>
+                   <Link to={"/detail/"+ id+"/edit"}>
                        <img src="/images/play-icon-white.png" alt="" />
                        <span>Trailer</span>
+                   </Link>
                    </Trailer>
                    <AddList>
                        <span/>

@@ -6,6 +6,7 @@ import Detail from './Components/Detail'
 import Header from './Components/Header'
 import Home from './Components/Home'
 import Login from './Components/Login'
+import EditData from './Components/EditData'
 const App = () => {
   return (
     <div className="App">
@@ -20,6 +21,9 @@ const App = () => {
           </Route>
           <Route exact path='/detail/:id'>
           <Detail/>
+          </Route>
+          <Route exact path='/detail/:id/edit'>
+          <EditData/>
           </Route>
 
           <Route exact path='/new'>

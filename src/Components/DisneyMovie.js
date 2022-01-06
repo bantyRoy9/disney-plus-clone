@@ -1,29 +1,34 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectDisneyMovie } from "../features/movie/movieSlice";
-const DisneyMovie = () => {
-  const movies = useSelector(selectDisneyMovie);
-  return (
-    <Container>
-      <h4>Disney Movies</h4>
-      <Content>
-        {movies &&
-          movies.map((movie, key) => (
-            <Wrap key={key}>
-              <Link to={"/detail/" + movie.id}>
-                <img src={movie.cardImg} alt={movie.title} />
-              </Link>
-            </Wrap>
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectDisneyMovie } from '../features/movie/movieSlice'
+const Originals = () => {
+    const movies=useSelector(selectDisneyMovie);
+    return (
+        <Container>
+        <h4>Disney Movie</h4>
+        <Content>
+          {movies &&movies.map((movie,key)=>(
+              <Wrap key={key}>
+                 
+                  <Link to={"/detail/"+ movie.id}>
+                    <WrapDesc>
+                      <p>{movie.title}</p>
+                      <p>{movie.subTitle}</p>
+                    </WrapDesc>
+                     <img src={movie.cardImg} alt="" />
+                  </Link>
+              </Wrap>
           ))}
-      </Content>
+        </Content>
     </Container>
-  );
-};
+    )
+}
 
-export default DisneyMovie;
+export default Originals
 const Container = styled.div``;
+
 const Content = styled.div`
   padding: 0 0 26px;
   display: grid;
@@ -37,6 +42,7 @@ const Content = styled.div`
 const Wrap = styled.div`
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
 
   overflow: hidden;
   border: 3px solid rgba(249, 249, 249, 0.1);
@@ -53,5 +59,32 @@ const Wrap = styled.div`
     transform: scale(1.2);
     box-shadow: rgba(0 0 0 / 80%) 0px 40px 58px -16px,
       rgba(0 0 0 / 72%) 0px 30px 22px -10px;
+      
+  }
+
+
+`;
+
+const WrapDesc=styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background:rgba(0,0,0,0.5);
+  top:0;
+  left: 0;
+  opacity: 0;
+  margin:0;
+  &:hover{
+    opacity: 1;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  p{
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin:2px 4px;
+    padding: 0;
   }
 `;
